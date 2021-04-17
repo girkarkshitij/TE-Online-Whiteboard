@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Error</title>
+    <style>
+      html {
+        background-color: #303;
+      }
+
+      h1,
+      h2 {
+        font-family: monospace;
+        color: #f77;
+        margin: auto;
+        margin-top: 100px;
+        width: 50%;
+        font-size: 5em;
+      }
+
+      @keyframes rotation {
+        0% {
+          color: #fa0;
+          transform: rotate(0deg);
+        }
+
+        50% {
+          color: #f11;
+          transform: rotate(150deg);
+          font-size: 3em;
+        }
+
+        100% {
+          color: #f0a;
+          transform: rotate(30deg);
+        }
+      }
+
+      #smiley {
+        animation: rotation 5s infinite;
+        animation-delay: 3s;
+        animation-direction: alternate;
+        width: 3em;
+      }
+
+      #smiley:hover {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="smiley">:-(</h1>
+    <h2>Sorry, an error occured...</h2>
+  </body>
+</html>

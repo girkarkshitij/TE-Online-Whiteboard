@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{language}}">
+  <head>
+    <meta charset="utf-8" />
+    <title>Online Whiteboard</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/x-icon" sizes="16x16" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+    <link rel="mask-icon" href="favicon.svg" color="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:url" content="https://wbo.ophir.dev" />
+    <meta property="og:image" content="{{baseUrl}}/favicon.svg" />
+    <link rel="canonical" href="?lang={{language}}" />
+    {{#languages}}
+    <link rel="alternate" hreflang="{{.}}" href="?lang={{.}}" />
+    {{/languages}}
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#C4DFFF" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Online Whiteboard</h1>
+    </header>
+
+    <main>
+      <div id="description">
+        <h3>{{translations.index_title}}</h3>
+        <p>{{{translations.introduction_paragraph}}}</p>
+        <p>{{{translations.share_instructions}}}</p>
+      </div>
+
+      <div>
+        <p>{{{translations.private_board_description}}}</p>
+        <a href="random" class="wbo-button"
+          >{{{translations.create_private_board}}}</a
+        >
+      </div>
+    </main>
+  </body>
+
+  <script src="../js/index.js" async defer></script>
+</html>

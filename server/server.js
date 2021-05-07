@@ -1,26 +1,26 @@
-const app = require('http').createServer(handler),
-  sockets = require('./sockets.js'),
-  log = require('./log.js').log,
-  path = require('path'),
-  url = require('url'),
-  fs = require('fs'),
-  crypto = require('crypto'),
-  serveStatic = require('serve-static'),
-  createSVG = require('./createSVG.js'),
-  templating = require('./templating.js'),
-  config = require('./configuration.js'),
-  polyfillLibrary = require('polyfill-library'),
-  check_output_directory = require('./check_output_directory.js');
+const app = require('http').createServer(handler);
+const sockets = require('./sockets.js');
+const log = require('./log.js').log;
+const path = require('path');
+const url = require('url');
+const fs = require('fs');
+const crypto = require('crypto');
+const serveStatic = require('serve-static');
+const createSVG = require('./createSVG.js');
+const templating = require('./templating.js');
+const config = require('./configuration.js');
+const polyfillLibrary = require('polyfill-library');
+const check_output_directory = require('./check_output_directory.js');
 
 var MIN_NODE_VERSION = 10.0;
 
 if (parseFloat(process.versions.node) < MIN_NODE_VERSION) {
   console.warn(
-    '!!! You are using node ' +
+    '! You are using node ' +
       process.version +
-      ', wbo requires at least ' +
+      ', online whiteboard requires at least ' +
       MIN_NODE_VERSION +
-      ' !!!'
+      ' !'
   );
 }
 

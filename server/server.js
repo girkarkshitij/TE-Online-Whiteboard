@@ -1,4 +1,4 @@
-var app = require('http').createServer(handler),
+const app = require('http').createServer(handler),
   sockets = require('./sockets.js'),
   log = require('./log.js').log,
   path = require('path'),

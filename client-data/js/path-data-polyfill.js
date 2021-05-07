@@ -42,12 +42,10 @@ if (
         var command = commandsMap[char] ? commandsMap[char] : null;
 
         if (command === null) {
-          // Possibly an implicit command. Not allowed if this is the first command.
           if (this._prevCommand === null) {
             return null;
           }
 
-          // Check for remaining coordinates in the current command.
           if (
             (char === '+' ||
               char === '-' ||
@@ -114,7 +112,6 @@ if (
         }
 
         if (values === null || values.indexOf(null) >= 0) {
-          // Unknown command or known command with invalid values
           return null;
         } else {
           return { type: command, values: values };
@@ -131,13 +128,11 @@ if (
       },
 
       initialCommandIsMoveTo: function () {
-        // If the path is empty it is still valid, so return true.
         if (!this.hasMoreData()) {
           return true;
         }
 
         var command = this.peekSegmentType();
-        // Path must start with moveTo.
         return command === 'M' || command === 'm';
       },
 
@@ -182,9 +177,6 @@ if (
         return this._currentIndex < this._endIndex;
       },
 
-      // Parse a number from an SVG path. This very closely follows genericParseNumber(...) from
-      // Source/core/svg/SVGParserUtilities.cpp.
-      // Spec: http://www.w3.org/TR/SVG11/single-page.html#paths-PathDataBNF
       _parseNumber: function () {
         var exponent = 0;
         var integer = 0;

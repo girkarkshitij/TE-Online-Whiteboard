@@ -1,31 +1,5 @@
-/**
- *                        WHITEBOPHIR
- *********************************************************
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in this page.
- *
- * Copyright (C) 2020  Ophir LOJKINE
- *
- *
- * The JavaScript code in this page is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend
- */
-
-(function () { //Code isolation
-    var curUpdate = { //The data of the message that will be sent for every new point
+(function () { 
+    var curUpdate = { 
         'type': 'update',
         'id': "",
         'x': 0,
@@ -34,14 +8,13 @@
         'y2': 0
     },
         lastPos = { x: 0, y: 0 },
-        lastTime = performance.now(); //The time at which the last point was drawn
+        lastTime = performance.now(); 
 
     function start(x, y, evt) {
 
-        //Prevent the press from being interpreted by the browser
         evt.preventDefault();
 
-        curUpdate.id = Tools.generateUID("e"); //"e" for ellipse
+        curUpdate.id = Tools.generateUID("e"); //e -> ellipse
 
         Tools.drawAndSend({
             'type': 'ellipse',
@@ -109,7 +82,7 @@
                 var shape = svg.getElementById(data['id']);
                 if (!shape) {
                     console.error("Ellipse: Hmmm... I received an update for a shape that has not been created (%s).", data['id']);
-                    createShape({ //create a new shape in order not to loose the points
+                    createShape({ 
                         "id": data['id'],
                         "x": data['x2'],
                         "y": data['y2']
@@ -125,11 +98,9 @@
 
     var svg = Tools.svg;
     function createShape(data) {
-        //Creates a new shape on the canvas, or update a shape that already exists with new information
         var shape = svg.getElementById(data.id) || Tools.createSVGElement("ellipse");
         updateShape(shape, data);
         shape.id = data.id;
-        //If some data is not provided, choose default value. The shape may be updated later
         shape.setAttribute("stroke", data.color || "black");
         shape.setAttribute("stroke-width", data.size || 10);
         shape.setAttribute("opacity", Math.max(0.1, Math.min(1, data.opacity)) || 1);
@@ -169,4 +140,4 @@
     };
     Tools.add(circleTool);
 
-})(); //End of code isolation
+})(); 

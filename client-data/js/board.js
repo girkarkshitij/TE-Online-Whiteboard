@@ -38,10 +38,9 @@ Tools.connect = function () {
     path: window.location.pathname.split('/boards/')[0] + '/socket.io',
     reconnection: true,
     reconnectionDelay: 100,
-    timeout: 1000 * 60 * 20, // Timeout after 20 minutes
+    timeout: 1000 * 60 * 20, 
   });
 
-  //Receive draw instructions from the server
   this.socket.on('broadcast', function (msg) {
     handleMessage(msg).finally(function afterload() {
       var loadingEl = document.getElementById('loadingMessage');
@@ -359,7 +358,6 @@ function batchCall(fn, args) {
 }
 
 function handleMessage(message) {
-  //Check if the message is in the expected format
   if (!message.tool && !message._children) {
     console.error('Received a badly formatted message (no tool). ', message);
   }

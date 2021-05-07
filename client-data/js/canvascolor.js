@@ -9,7 +9,6 @@
 // ==/ClosureCompiler==
 
 var canvascolor = (function () {
-  //Code Isolation
   'use strict';
 
   (function addCSS() {

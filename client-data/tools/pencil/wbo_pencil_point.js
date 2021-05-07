@@ -2,50 +2,32 @@
     "use strict";
 
     function dist(x1, y1, x2, y2) {
-        //Returns the distance between (x1,y1) and (x2,y2)
         return Math.hypot(x2 - x1, y2 - y1);
     }
 
-    /**
-     * Represents a single operation in an SVG path
-     * @param {string} type 
-     * @param {number[]} values 
-     */
     function PathDataPoint(type, values) {
         this.type = type;
         this.values = values;
     }
 
-    /**
-     * Given the existing points in a path, add a new point to get a smoothly interpolated path
-     * @param {PathDataPoint[]} pts 
-     * @param {number} x 
-     * @param {number} y 
-     */
     function wboPencilPoint(pts, x, y) {
-        // pts represents the points that are already in the line as a PathData
         var nbr = pts.length; //The number of points already in the line
         var npoint;
         switch (nbr) {
             case 0: //The first point in the line
-                //If there is no point, we have to start the line with a moveTo statement
                 pts.push(new PathDataPoint("M", [x, y]));
-                //Temporary first point so that clicks are shown and can be erased
                 npoint = new PathDataPoint("L", [x, y]);
                 break;
-            case 1: //This should never happen
-                // First point will be the move. Add Line of zero length ensure there are two points and fall through
+            case 1: 
                 pts.push(new PathDataPoint("L", [pts[0].values[0], pts[0].values[1]]));
-            // noinspection FallThroughInSwitchStatementJS
-            case 2: //There are two points. The initial move and a line of zero length to make it visible
-                //Draw a curve that is segment between the old point and the new one
+            case 2:
                 npoint = new PathDataPoint("C", [
                     pts[0].values[0], pts[0].values[1],
                     x, y,
                     x, y,
                 ]);
                 break;
-            default: //There are at least two points in the line
+            default: 
                 npoint = pencilExtrapolatePoints(pts, x, y);
         }
         if (npoint) pts.push(npoint);

@@ -1,36 +1,9 @@
-/**
- *						  WHITEBOPHIR
- *********************************************************
- * @licstart  The following is the entire license notice for the 
- *	JavaScript code in this page.
- *
- * Copyright (C) 2013  Ophir LOJKINE
- *
- *
- * The JavaScript code in this page is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend
- */
-
-(function hand() { //Code isolation
+(function hand() { 
 	var selected = null;
 	var last_sent = 0;
 
 
 	function startMovingElement(x, y, evt) {
-		//Prevent the press from being interpreted by the browser
 		evt.preventDefault();
 		if (!evt.target || !Tools.drawingArea.contains(evt.target)) return;
 		var tmatrix = get_translate_matrix(evt.target);
@@ -52,12 +25,9 @@
 	}
 
 	function get_translate_matrix(elem) {
-		// Returns the first translate or transform matrix or makes one
 		var translate = null;
 		for (var i = 0; i < elem.transform.baseVal.numberOfItems; ++i) {
 			var baseVal = elem.transform.baseVal[i];
-			// quick tests showed that even if one changes only the fields e and f or uses createSVGTransformFromMatrix
-			// the brower may add a SVG_TRANSFORM_MATRIX instead of a SVG_TRANSFORM_TRANSLATE
 			if (baseVal.type === SVGTransform.SVG_TRANSFORM_TRANSLATE || baseVal.type === SVGTransform.SVG_TRANSFORM_MATRIX) {
 				translate = baseVal;
 				break;
@@ -140,4 +110,4 @@
 	};
 	Tools.add(handTool);
 	Tools.change("Hand"); // Use the hand tool by default
-})(); //End of code isolation
+})();

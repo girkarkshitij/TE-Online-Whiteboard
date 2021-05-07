@@ -1,4 +1,4 @@
-var fs = require('./fs_promises.js'),
+const fs = require('./fs_promises.js'),
   log = require('./log.js').log,
   path = require('path'),
   config = require('./configuration.js'),
@@ -162,7 +162,6 @@ class BoardData {
       for (const id in boardData.board) boardData.validate(boardData.board[id]);
       log('disk load', { board: boardData.name });
     } catch (e) {
-      // If the file doesn't exist, this is not an error
       if (e.code === 'ENOENT') {
         log('empty board creation', { board: boardData.name });
       } else {

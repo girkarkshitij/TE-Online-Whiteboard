@@ -35,5 +35,3 @@ Minitpl = (function () {
 
 	return Minitpl;
 }());
-
-GggG

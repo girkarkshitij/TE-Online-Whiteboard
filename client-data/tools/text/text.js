@@ -1,29 +1,3 @@
-/**
- *                        WHITEBOPHIR
- *********************************************************
- * @licstart  The following is the entire license notice for the 
- *  JavaScript code in this page.
- *
- * Copyright (C) 2013  Ophir LOJKINE
- *
- *
- * The JavaScript code in this page is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend
- */
-
 (function () { //Code isolation
 	var board = Tools.board;
 
@@ -59,7 +33,6 @@
 	}
 
 	function clickHandler(x, y, evt, isTouchEvent) {
-		//if(document.querySelector("#menu").offsetWidth>Tools.menu_width+3) return;
 		if (evt.target === input) return;
 		if (evt.target.tagName === "text") {
 			editOldText(evt.target);
@@ -138,7 +111,6 @@
 		}
 		if (performance.now() - curText.lastSending > 100) {
 			if (curText.sentText !== input.value) {
-				//If the user clicked where there was no text, then create a new text field
 				if (curText.id === 0) {
 					curText.id = Tools.generateUID("t"); //"t" for text
 					Tools.drawAndSend({
@@ -216,4 +188,4 @@
 		"mouseCursor": "text"
 	});
 
-})(); //End of code isolation
+})(); 
